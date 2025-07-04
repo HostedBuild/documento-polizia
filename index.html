@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento Polizia di Stato</title>
+    <!-- Carica Tailwind CSS per uno styling rapido e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carica la libreria html2pdf.js per l'esportazione PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* Stili personalizzati per il documento */
+        body {
+            font-family: 'Inter', sans-serif; /* Utilizza il font Inter */
+            background-color: #f0f0f0; /* Sfondo leggero per la pagina */
+            display: flex;
+            flex-direction: column; /* Permette di impilare il pulsante e il documento */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Altezza minima per centrare verticalmente */
+            padding: 30px; /* Padding leggermente aumentato per il corpo */
+            box-sizing: border-box;
+        }
+        .document-container {
+            background-color: #ffffff; /* Sfondo bianco per il documento */
+            width: 100%;
+            max-width: 850px; /* Larghezza massima leggermente aumentata */
+            min-height: 1120px; /* Simula un formato A4 */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
+            border-radius: 12px; /* Bordi più arrotondati */
+            padding: 50px; /* Padding interno aumentato */
+            position: relative; /* Necessario per posizionare i loghi */
+            overflow: hidden; /* Assicura che i loghi non escano dai bordi */
+            border: 1px solid #e0e0e0; /* Bordo sottile per un aspetto più definito */
+        }
+        .logo-polizia {
+            position: absolute;
+            top: 50px; /* Posizione dall'alto */
+            right: 50px; /* Posizione da destra */
+            width: 120px; /* Dimensione uniforme per entrambi i loghi */
+            height: auto; /* Mantiene le proporzioni */
+            opacity: 1; /* Opacità massima (100%) */
+            pointer-events: none; /* Rende il logo non cliccabile */
+            z-index: 0; /* Assicura che il logo sia dietro il testo */
+            user-select: none; /* Impedisce la selezione del logo */
+        }
+        .logo-repubblica {
+            position: absolute;
+            top: 50px; /* Posizione dall'alto */
+            left: 50px; /* Posizione da sinistra */
+            width: 120px; /* Dimensione uniforme per entrambi i loghi */
+            height: auto; /* Mantiene le proporzioni */
+            opacity: 1; /* Opacità massima (100%) */
+            pointer-events: none; /* Rende il logo non cliccabile */
+            z-index: 0; /* Assicura che il logo sia dietro il testo */
+            user-select: none; /* Impedisce la selezione del logo */
+        }
+        .content-area {
+            position: relative;
+            z-index: 1; /* Assicura che il testo sia sopra i loghi */
+            min-height: 100%; /* Permette all'area di contenuto di espandersi */
+            color: #333; /* Colore del testo */
+            line-height: 1.7; /* Interlinea leggermente aumentata per leggibilità */
+            padding-top: 20px; /* Spazio aggiuntivo per i loghi in alto */
+            padding-bottom: 20px; /* Spazio aggiuntivo in basso */
+        }
+        .header-section {
+            border-bottom: 2px solid #003366; /* Linea più spessa sotto l'intestazione */
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .section-divider {
+            border-bottom: 1px dashed #ccc; /* Linea tratteggiata per le sezioni */
+            margin: 25px 0;
+        }
+        /* Stili per le aree di testo modificabili */
+        .editable-line {
+            display: inline-block; /* Permette di impostare la larghezza */
+            border-bottom: 1px solid #999; /* Linea sottile per la scrittura */
+            min-width: 150px; /* Larghezza minima per le linee */
+            padding: 2px 0;
+            font-size: inherit;
+            color: inherit;
+            outline: none; /* Rimuove il bordo di focus predefinito del browser */
+            cursor: text; /* Indica che l'area è cliccabile per scrivere */
+            white-space: nowrap; /* Impedisce il wrapping del testo sulla stessa riga */
+        }
+        .editable-block {
+            border: 1px solid #e0e0e0; /* Bordo leggero per l'area principale */
+            border-radius: 6px;
+            min-height: 400px; /* Altezza minima per l'area di contenuto */
+            padding: 15px;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fcfcfc; /* Sfondo quasi bianco */
+            outline: none;
+            cursor: text;
+            overflow-y: auto; /* Permette lo scroll se il contenuto è troppo lungo */
+        }
+        .editable-block:empty:before {
+            content: attr(data-placeholder);
+            color: #aaa;
+            cursor: text;
+        }
+        .editable-line:empty:before {
+            content: attr(data-placeholder);
+            color: #aaa;
+            cursor: text;
+        }
+
+        /* Stili per il pulsante di esportazione */
+        .export-button {
+            background-color: #0056b3; /* Blu scuro */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-bottom: 20px; /* Spazio sotto il pulsante */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .export-button:hover {
+            background-color: #004085; /* Blu più scuro al passaggio del mouse */
+            transform: translateY(-2px); /* Effetto leggero di sollevamento */
+        }
+        .export-button:active {
+            transform: translateY(0);
+        }
+
+        /* Stili per la stampa - importanti per la libreria PDF */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .document-container {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+                min-height: auto; /* Rimuove l'altezza minima per la stampa */
+                border: none;
+            }
+            .logo-polizia, .logo-repubblica {
+                opacity: 0.5; /* Riduci opacità per la stampa se troppo invadente */
+            }
+            .editable-line, .editable-block {
+                border: none; /* Rimuovi i bordi in stampa */
+                background-color: transparent; /* Sfondo trasparente in stampa */
+                padding: 0;
+                min-height: auto; /* Rimuovi altezza minima per la stampa */
+            }
+            .editable-block:empty:before, .editable-line:empty:before {
+                content: ""; /* Nascondi i placeholder in stampa */
+            }
+            .export-button {
+                display: none; /* Nasconde il pulsante in stampa */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Pulsante per esportare il documento in PDF -->
+    <button class="export-button" onclick="generatePdf()">Esporta PDF</button>
+
+    <div class="document-container" id="documentContent">
+        <!-- Logo della Repubblica Italiana in alto a sinistra -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Emblem_of_Italy.svg/1200px-Emblem_of_Italy.svg.png"
+             alt="Emblema della Repubblica Italiana"
+             class="logo-repubblica">
+
+        <!-- Logo della Polizia di Stato in alto a destra -->
+        <img src="https://alessandria.today/wp-content/uploads/2018/01/polizia-di-stato.png"
+             alt="Logo Polizia di Stato"
+             class="logo-polizia">
+
+        <!-- Area di contenuto dove si può scrivere -->
+        <div class="content-area">
+            <!-- Intestazione del documento -->
+            <div class="text-center mb-8 header-section">
+                <h1 class="text-3xl font-extrabold uppercase text-blue-900 mb-2">REPUBBLICA ITALIANA</h1>
+                <h2 class="text-2xl font-semibold text-blue-800 mb-1">Ministero dell'Interno</h2>
+                <h3 class="text-xl font-medium text-blue-700">Dipartimento della Pubblica Sicurezza</h3>
+                <h4 class="text-2xl font-bold text-blue-900 mt-4">POLIZIA DI STATO</h4>
+            </div>
+
+            <!-- Sezione per il titolo del documento -->
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span contenteditable="true" class="editable-line text-center w-full" data-placeholder="TITOLO DEL DOCUMENTO"></span>
+                </h1>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Sezione per i dettagli del documento (es. numero protocollo, data) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 text-lg mb-8">
+                <div>
+                    <p class="mb-2"><strong>Protocollo N.:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire numero protocollo"></span></p>
+                    <p><strong>Data:</strong> <span contenteditable="true" class="editable-line" data-placeholder="GG/MM/AAAA"></span></p>
+                </div>
+                <div>
+                    <p class="mb-2"><strong>Ufficio:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire Ufficio di riferimento"></span></p>
+                    <p><strong>Oggetto:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Descrizione breve dell'oggetto"></span></p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Spazio per il contenuto principale del documento -->
+            <div class="min-h-[500px] border border-gray-300 rounded-lg p-6 mb-8 bg-gray-50 flex flex-col">
+                <div contenteditable="true" class="editable-block flex-grow" data-placeholder="Inizia a scrivere il contenuto del documento qui..."></div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Sezione per la firma e i dettagli finali -->
+            <div class="text-right mt-12">
+                <p class="text-xl font-semibold mb-6">Il Funzionario / L'Agente Responsabile</p>
+                <p class="text-2xl font-bold mb-2">
+                    <span contenteditable="true" class="editable-line text-right" data-placeholder="NOME E COGNOME"></span>
+                </p>
+                <p class="text-base text-gray-600">
+                    <span contenteditable="true" class="editable-line text-right" data-placeholder="GRADO / QUALIFICA"></span>
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center text-xs text-gray-500 mt-20 pt-4 border-t border-gray-200">
+                <p>&copy; 2025 Polizia di Stato - Tutti i diritti riservati.</p>
+                <p>Documento generato per uso interno del server FiveM LiveLife. Non ha valore legale.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generatePdf() {
+            // Aggiungi un messaggio di caricamento
+            const originalButtonText = document.querySelector('.export-button').textContent;
+            document.querySelector('.export-button').textContent = 'Generazione PDF...';
+            document.querySelector('.export-button').disabled = true;
+
+            const element = document.getElementById('documentContent');
+
+            // Timeout per dare tempo alle immagini di caricarsi
+            setTimeout(() => {
+                html2pdf(element, {
+                    margin: 10,
+                    filename: 'Documento_Polizia_di_Stato.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        logging: true,
+                        dpi: 192,
+                        letterRendering: true,
+                        useCORS: true // Tenta di risolvere problemi CORS con le immagini
+                    },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                }).then(() => {
+                    // Ripristina il pulsante dopo la generazione
+                    document.querySelector('.export-button').textContent = originalButtonText;
+                    document.querySelector('.export-button').disabled = false;
+                }).catch(error => {
+                    console.error("Errore durante la generazione del PDF:", error);
+                    alert("Si è verificato un errore durante la generazione del PDF. Controlla la console per i dettagli.");
+                    document.querySelector('.export-button').textContent = originalButtonText;
+                    document.querySelector('.export-button').disabled = false;
+                });
+            }, 1000); // Ritardo di 1 secondo
+        }
+    </script>
+</body>
+</html>
