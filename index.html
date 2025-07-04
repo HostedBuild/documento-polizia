@@ -12,45 +12,45 @@
         /* Stili personalizzati per il documento */
         body {
             font-family: 'Inter', sans-serif; /* Utilizza il font Inter */
-            background-color: #f0f0f0; /* Sfondo leggero per la pagina */
+            background-color: #e9ecef; /* Sfondo leggermente più scuro per un contrasto migliore */
             display: flex;
             flex-direction: column; /* Permette di impilare il pulsante e il documento */
             justify-content: center;
             align-items: center;
             min-height: 100vh; /* Altezza minima per centrare verticalmente */
-            padding: 30px; /* Padding leggermente aumentato per il corpo */
+            padding: 40px; /* Padding aumentato per il corpo */
             box-sizing: border-box;
         }
         .document-container {
             background-color: #ffffff; /* Sfondo bianco per il documento */
             width: 100%;
-            max-width: 850px; /* Larghezza massima leggermente aumentata */
+            max-width: 900px; /* Larghezza massima aumentata per un aspetto più imponente */
             min-height: 1120px; /* Simula un formato A4 */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
-            border-radius: 12px; /* Bordi più arrotondati */
-            padding: 50px; /* Padding interno aumentato */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18); /* Ombra più pronunciata e morbida */
+            border-radius: 15px; /* Bordi più arrotondati */
+            padding: 60px; /* Padding interno aumentato */
             position: relative; /* Necessario per posizionare i loghi */
             overflow: hidden; /* Assicura che i loghi non escano dai bordi */
-            border: 1px solid #e0e0e0; /* Bordo sottile per un aspetto più definito */
+            border: 1px solid #d0d0d0; /* Bordo sottile per un aspetto più definito */
         }
         .logo-polizia {
             position: absolute;
-            top: 50px; /* Posizione dall'alto */
-            right: 50px; /* Posizione da destra */
-            width: 120px; /* Dimensione uniforme per entrambi i loghi */
+            top: 60px; /* Posizione dall'alto */
+            right: 60px; /* Posizione da destra */
+            width: 130px; /* Dimensione leggermente aumentata per entrambi i loghi */
             height: auto; /* Mantiene le proporzioni */
-            opacity: 1; /* Opacità massima (100%) */
+            opacity: 0.9; /* Opacità leggermente ridotta per un effetto più integrato */
             pointer-events: none; /* Rende il logo non cliccabile */
             z-index: 0; /* Assicura che il logo sia dietro il testo */
             user-select: none; /* Impedisce la selezione del logo */
         }
         .logo-repubblica {
             position: absolute;
-            top: 50px; /* Posizione dall'alto */
-            left: 50px; /* Posizione da sinistra */
-            width: 120px; /* Dimensione uniforme per entrambi i loghi */
+            top: 60px; /* Posizione dall'alto */
+            left: 60px; /* Posizione da sinistra */
+            width: 130px; /* Dimensione leggermente aumentata per entrambi i loghi */
             height: auto; /* Mantiene le proporzioni */
-            opacity: 1; /* Opacità massima (100%) */
+            opacity: 0.9; /* Opacità leggermente ridotta per un effetto più integrato */
             pointer-events: none; /* Rende il logo non cliccabile */
             z-index: 0; /* Assicura che il logo sia dietro il testo */
             user-select: none; /* Impedisce la selezione del logo */
@@ -59,26 +59,26 @@
             position: relative;
             z-index: 1; /* Assicura che il testo sia sopra i loghi */
             min-height: 100%; /* Permette all'area di contenuto di espandersi */
-            color: #333; /* Colore del testo */
-            line-height: 1.7; /* Interlinea leggermente aumentata per leggibilità */
-            padding-top: 20px; /* Spazio aggiuntivo per i loghi in alto */
-            padding-bottom: 20px; /* Spazio aggiuntivo in basso */
+            color: #212529; /* Colore del testo più scuro per maggiore leggibilità */
+            line-height: 1.8; /* Interlinea aumentata per una migliore leggibilità */
+            padding-top: 30px; /* Spazio aggiuntivo per i loghi in alto */
+            padding-bottom: 30px; /* Spazio aggiuntivo in basso */
         }
         .header-section {
-            border-bottom: 2px solid #003366; /* Linea più spessa sotto l'intestazione */
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #004085; /* Linea più spessa e colore più scuro per l'intestazione */
+            padding-bottom: 20px;
+            margin-bottom: 40px;
         }
         .section-divider {
-            border-bottom: 1px dashed #ccc; /* Linea tratteggiata per le sezioni */
-            margin: 25px 0;
+            border-bottom: 1px solid #ced4da; /* Linea solida e più chiara per le sezioni */
+            margin: 35px 0; /* Margine aumentato */
         }
         /* Stili per le aree di testo modificabili */
         .editable-line {
             display: inline-block; /* Permette di impostare la larghezza */
-            border-bottom: 1px solid #999; /* Linea sottile per la scrittura */
-            min-width: 150px; /* Larghezza minima per le linee */
-            padding: 2px 0;
+            border-bottom: 1px dashed #6c757d; /* Linea tratteggiata per la scrittura, colore più neutro */
+            min-width: 180px; /* Larghezza minima aumentata per le linee */
+            padding: 3px 0;
             font-size: inherit;
             color: inherit;
             outline: none; /* Rimuove il bordo di focus predefinito del browser */
@@ -86,47 +86,124 @@
             white-space: nowrap; /* Impedisce il wrapping del testo sulla stessa riga */
         }
         .editable-block {
-            border: 1px solid #e0e0e0; /* Bordo leggero per l'area principale */
-            border-radius: 6px;
-            min-height: 400px; /* Altezza minima per l'area di contenuto */
-            padding: 15px;
-            font-size: 1rem;
-            color: #333;
-            background-color: #fcfcfc; /* Sfondo quasi bianco */
+            border: 1px solid #adb5bd; /* Bordo leggero per l'area principale, colore più neutro */
+            border-radius: 8px;
+            min-height: 700px; /* Altezza minima aumentata per l'area di contenuto */
+            padding: 20px;
+            font-size: 1.05rem; /* Dimensione del font leggermente aumentata */
+            color: #212529;
+            background-color: #f8f9fa; /* Sfondo quasi bianco, leggermente più caldo */
             outline: none;
             cursor: text;
             overflow-y: auto; /* Permette lo scroll se il contenuto è troppo lungo */
         }
         .editable-block:empty:before {
             content: attr(data-placeholder);
-            color: #aaa;
+            color: #888; /* Colore placeholder leggermente più scuro */
             cursor: text;
         }
         .editable-line:empty:before {
             content: attr(data-placeholder);
-            color: #aaa;
+            color: #888; /* Colore placeholder leggermente più scuro */
             cursor: text;
         }
 
-        /* Stili per il pulsante di esportazione */
-        .export-button {
+        /* Stili per i pulsanti di funzionalità */
+        .action-button {
             background-color: #0056b3; /* Blu scuro */
             color: white;
-            padding: 12px 25px;
+            padding: 14px 30px; /* Padding aumentato */
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            border-radius: 10px; /* Bordi più arrotondati */
+            font-size: 1.2rem; /* Dimensione del font aumentata */
             cursor: pointer;
-            margin-bottom: 20px; /* Spazio sotto il pulsante */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); /* Ombra più pronunciata */
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .export-button:hover {
+        .action-button:hover {
             background-color: #004085; /* Blu più scuro al passaggio del mouse */
-            transform: translateY(-2px); /* Effetto leggero di sollevamento */
+            transform: translateY(-3px); /* Effetto leggero di sollevamento */
         }
-        .export-button:active {
+        .action-button:active {
             transform: translateY(0);
+        }
+
+        /* Stili per la message box personalizzata */
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Sfondo overlay più scuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden; /* Inizialmente nascosto */
+            opacity: 0; /* Inizialmente trasparente */
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+        .message-box-overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+        .message-box {
+            background-color: white;
+            padding: 35px; /* Padding aumentato */
+            border-radius: 12px; /* Bordi più arrotondati */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35); /* Ombra più pronunciata */
+            text-align: center;
+            max-width: 450px; /* Larghezza massima aumentata */
+            width: 90%;
+            transform: translateY(-30px); /* Effetto di entrata più pronunciato */
+            transition: transform 0.3s ease;
+        }
+        .message-box-overlay.visible .message-box {
+            transform: translateY(0);
+        }
+        .message-box h3 {
+            font-size: 1.7rem; /* Dimensione del titolo aumentata */
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529; /* Colore del testo più scuro */
+        }
+        .message-box p {
+            font-size: 1.1rem; /* Dimensione del messaggio aumentata */
+            margin-bottom: 30px;
+            color: #495057; /* Colore del testo più neutro */
+        }
+        .message-box button {
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 25px; /* Padding aumentato */
+            border: none;
+            border-radius: 8px; /* Bordi più arrotondati */
+            cursor: pointer;
+            font-size: 1.1rem; /* Dimensione del font aumentata */
+            transition: background-color 0.2s ease;
+        }
+        .message-box button:hover {
+            background-color: #004085;
+        }
+
+        /* Stili per il modal di input AI (non più usato ma mantenuto per riferimento) */
+        .ai-input-modal-overlay {
+            display: none; /* Nascondi completamente il modal */
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0056b3;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none; /* Hidden by default */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Stili per la stampa - importanti per la libreria PDF */
@@ -154,54 +231,54 @@
             .editable-block:empty:before, .editable-line:empty:before {
                 content: ""; /* Nascondi i placeholder in stampa */
             }
-            .export-button {
-                display: none; /* Nasconde il pulsante in stampa */
+            .action-button, .message-box-overlay, .ai-input-modal-overlay {
+                display: none; /* Nasconde i pulsanti e i modal in stampa */
             }
         }
     </style>
 </head>
 <body>
-    <!-- Pulsante per esportare il documento in PDF -->
-    <button class="export-button" onclick="generatePdf()">Esporta PDF</button>
+    <!-- Pulsanti per le funzionalità -->
+    <div class="flex gap-4 mb-6">
+        <button class="action-button" onclick="generatePdf()">Esporta PDF 🖨️</button>
+        <button class="action-button bg-purple-600 hover:bg-purple-700" onclick="summarizeContentWithLLM()">Riassumi Contenuto 📝</button>
+        <button class="action-button bg-gray-600 hover:bg-gray-700" onclick="correctTextWithLLM()">Correggi Testo ✏️</button>
+    </div>
+
 
     <div class="document-container" id="documentContent">
         <!-- Logo della Repubblica Italiana in alto a sinistra -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Emblem_of_Italy.svg/1200px-Emblem_of_Italy.svg.png"
              alt="Emblema della Repubblica Italiana"
-             class="logo-repubblica">
+             class="logo-repubblica"
+             onerror="this.onerror=null;this.src='https://placehold.co/130x130/e0e0e0/555555?text=Logo+Italia';">
 
         <!-- Logo della Polizia di Stato in alto a destra -->
         <img src="https://alessandria.today/wp-content/uploads/2018/01/polizia-di-stato.png"
              alt="Logo Polizia di Stato"
-             class="logo-polizia">
+             class="logo-polizia"
+             onerror="this.onerror=null;this.src='https://placehold.co/130x130/e0e0e0/555555?text=Logo+Polizia';">
 
         <!-- Area di contenuto dove si può scrivere -->
         <div class="content-area">
             <!-- Intestazione del documento -->
             <div class="text-center mb-8 header-section">
-                <h1 class="text-3xl font-extrabold uppercase text-blue-900 mb-2">REPUBBLICA ITALIANA</h1>
-                <h2 class="text-2xl font-semibold text-blue-800 mb-1">Ministero dell'Interno</h2>
+                <h1 class="text-4xl font-extrabold uppercase text-blue-900 mb-3">REPUBBLICA ITALIANA</h1>
+                <h2 class="text-2xl font-semibold text-blue-800 mb-2">Ministero dell'Interno</h2>
                 <h3 class="text-xl font-medium text-blue-700">Dipartimento della Pubblica Sicurezza</h3>
-                <h4 class="text-2xl font-bold text-blue-900 mt-4">POLIZIA DI STATO</h4>
+                <h4 class="text-3xl font-bold text-blue-900 mt-5">POLIZIA DI STATO</h4>
+                <!-- Aggiunto "Questura di Roma" in corsivo con lo stesso colore -->
+                <p class="text-2xl italic font-semibold text-blue-900 mt-2">Questura di Roma</p>
             </div>
-
-            <!-- Sezione per il titolo del documento -->
-            <div class="text-center mb-10">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">
-                    <span contenteditable="true" class="editable-line text-center w-full" data-placeholder="TITOLO DEL DOCUMENTO"></span>
-                </h1>
-            </div>
-
-            <div class="section-divider"></div>
 
             <!-- Sezione per i dettagli del documento (es. numero protocollo, data) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 text-lg mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 text-lg mb-10">
                 <div>
-                    <p class="mb-2"><strong>Protocollo N.:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire numero protocollo"></span></p>
+                    <p class="mb-3"><strong>Protocollo N.:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire numero protocollo"></span></p>
                     <p><strong>Data:</strong> <span contenteditable="true" class="editable-line" data-placeholder="GG/MM/AAAA"></span></p>
                 </div>
                 <div>
-                    <p class="mb-2"><strong>Ufficio:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire Ufficio di riferimento"></span></p>
+                    <p class="mb-3"><strong>Ufficio:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Inserire Ufficio di riferimento"></span></p>
                     <p><strong>Oggetto:</strong> <span contenteditable="true" class="editable-line" data-placeholder="Descrizione breve dell'oggetto"></span></p>
                 </div>
             </div>
@@ -209,65 +286,240 @@
             <div class="section-divider"></div>
 
             <!-- Spazio per il contenuto principale del documento -->
-            <div class="min-h-[500px] border border-gray-300 rounded-lg p-6 mb-8 bg-gray-50 flex flex-col">
-                <div contenteditable="true" class="editable-block flex-grow" data-placeholder="Inizia a scrivere il contenuto del documento qui..."></div>
+            <div class="min-h-[700px] border border-gray-400 rounded-lg p-7 mb-10 bg-gray-100 flex flex-col">
+                <div id="mainContentEditable" contenteditable="true" class="editable-block flex-grow" data-placeholder="Inizia a scrivere il contenuto del documento qui..."></div>
             </div>
 
             <div class="section-divider"></div>
 
             <!-- Sezione per la firma e i dettagli finali -->
-            <div class="text-right mt-12">
+            <div class="text-right mt-16">
                 <p class="text-xl font-semibold mb-6">Il Funzionario / L'Agente Responsabile</p>
-                <p class="text-2xl font-bold mb-2">
+                <p class="text-2xl font-bold mb-3">
                     <span contenteditable="true" class="editable-line text-right" data-placeholder="NOME E COGNOME"></span>
                 </p>
-                <p class="text-base text-gray-600">
+                <p class="text-base text-gray-700">
                     <span contenteditable="true" class="editable-line text-right" data-placeholder="GRADO / QUALIFICA"></span>
                 </p>
             </div>
 
             <!-- Footer -->
-            <div class="text-center text-xs text-gray-500 mt-20 pt-4 border-t border-gray-200">
+            <div class="text-center text-xs text-gray-600 mt-24 pt-5 border-t border-gray-300">
                 <p>&copy; 2025 Polizia di Stato - Tutti i diritti riservati.</p>
                 <p>Documento generato per uso interno del server FiveM LiveLife. Non ha valore legale.</p>
             </div>
         </div>
     </div>
 
-    <script>
-        function generatePdf() {
-            // Aggiungi un messaggio di caricamento
-            const originalButtonText = document.querySelector('.export-button').textContent;
-            document.querySelector('.export-button').textContent = 'Generazione PDF...';
-            document.querySelector('.export-button').disabled = true;
+    <!-- Custom Message Box -->
+    <div id="messageBoxOverlay" class="message-box-overlay">
+        <div class="message-box">
+            <h3 id="messageBoxTitle"></h3>
+            <p id="messageBoxContent"></p>
+            <button onclick="hideMessageBox()">OK</button>
+        </div>
+    </div>
 
+    <script>
+        /**
+         * Mostra una message box personalizzata.
+         * @param {string} title - Il titolo della message box.
+         * @param {string} message - Il messaggio da visualizzare.
+         */
+        function showMessageBox(title, message) {
+            document.getElementById('messageBoxTitle').textContent = title;
+            document.getElementById('messageBoxContent').textContent = message;
+            document.getElementById('messageBoxOverlay').classList.add('visible');
+        }
+
+        /**
+         * Nasconde la message box personalizzata.
+         */
+        function hideMessageBox() {
+            document.getElementById('messageBoxOverlay').classList.remove('visible');
+        }
+
+        /**
+         * Ottiene il testo selezionato nell'area di testo modificabile.
+         * @returns {string} Il testo selezionato.
+         */
+        function getSelectedText() {
+            const selection = window.getSelection();
+            const mainContentArea = document.getElementById('mainContentEditable');
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                // Assicurati che la selezione sia all'interno dell'area di contenuto modificabile
+                if (mainContentArea.contains(range.commonAncestorContainer)) {
+                    return range.toString().trim();
+                }
+            }
+            return '';
+        }
+
+        /**
+         * Riassumi il contenuto del documento utilizzando l'API Gemini (LLM).
+         */
+        async function summarizeContentWithLLM() {
+            const mainContentArea = document.getElementById('mainContentEditable');
+            const contentToSummarize = mainContentArea.textContent.trim();
+
+            if (!contentToSummarize) {
+                showMessageBox("Attenzione", "Non c'è contenuto da riassumere. Scrivi qualcosa nel documento prima.");
+                return;
+            }
+
+            // Riferimento ai pulsanti per disabilitarli
+            const allActionButtons = document.querySelectorAll('.action-button');
+            allActionButtons.forEach(button => button.disabled = true);
+            showMessageBox("Riassunto in corso...", "Generazione del riassunto in corso. Attendere prego.");
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Riassumi il seguente testo in italiano in modo conciso e professionale, mantenendo il tono di un documento della Polizia di Stato. Se il testo è troppo breve o non significativo, indicalo. Testo: "${contentToSummarize}"` }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Lascia vuoto per l'API key fornita dall'ambiente Canvas
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`Errore API: ${response.status} - ${errorData.error.message || response.statusText}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const summaryText = result.candidates[0].content.parts[0].text;
+                    showMessageBox("Riassunto del Contenuto", summaryText);
+                } else {
+                    showMessageBox("Errore Riassunto AI", "Impossibile generare il riassunto. La risposta dell'AI è vuota o in un formato inatteso.");
+                    console.error("Risposta AI inattesa per riassunto:", result);
+                }
+            } catch (error) {
+                console.error("Errore durante la chiamata all'API Gemini per il riassunto:", error);
+                showMessageBox("Errore di Riassunto AI", `Si è verificato un errore durante il riassunto del contenuto: ${error.message}.`);
+            } finally {
+                // Riabilita tutti i pulsanti
+                allActionButtons.forEach(button => button.disabled = false);
+            }
+        }
+
+        /**
+         * Correggi il testo selezionato utilizzando l'API Gemini (LLM).
+         */
+        async function correctTextWithLLM() {
+            const selectedText = getSelectedText();
+
+            if (!selectedText) {
+                showMessageBox("Attenzione", "Seleziona una porzione di testo nel documento per correggerla.");
+                return;
+            }
+
+            // Riferimento ai pulsanti per disabilitarli
+            const allActionButtons = document.querySelectorAll('.action-button');
+            allActionButtons.forEach(button => button.disabled = true);
+            showMessageBox("Correzione in corso...", "Analisi del testo e generazione delle correzioni. Attendere prego.");
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Correggi il seguente testo in italiano per migliorare la grammatica, la sintassi, la punteggiatura e il tono, rendendolo più formale e adatto a un documento ufficiale della Polizia di Stato. Se il testo è già perfetto o non significativo, indicalo. Testo da correggere: "${selectedText}"` }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Lascia vuoto per l'API key fornita dall'ambiente Canvas
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`Errore API: ${response.status} - ${errorData.error.message || response.statusText}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const correctedText = result.candidates[0].content.parts[0].text;
+                    showMessageBox("Testo Corretto", correctedText);
+                } else {
+                    showMessageBox("Errore Correzione AI", "Impossibile correggere il testo. La risposta dell'AI è vuota o in un formato inatteso.");
+                    console.error("Risposta AI inattesa per correzione:", result);
+                }
+            } catch (error) {
+                console.error("Errore durante la chiamata all'API Gemini per la correzione:", error);
+                showMessageBox("Errore di Correzione AI", `Si è verificato un errore durante la correzione del testo: ${error.message}.`);
+            } finally {
+                // Riabilita tutti i pulsanti
+                allActionButtons.forEach(button => button.disabled = false);
+            }
+        }
+
+        /**
+         * Genera il documento PDF dal contenuto HTML.
+         */
+        function generatePdf() {
+            // Riferimento al pulsante di esportazione
+            const exportButton = document.querySelector('.action-button');
+            // Salva il testo originale del pulsante
+            const originalButtonText = exportButton.textContent;
+
+            // Aggiorna il testo del pulsante e disabilitalo per indicare il caricamento
+            exportButton.textContent = 'Generazione PDF...';
+            exportButton.disabled = true;
+
+            // Elemento HTML da convertire in PDF
             const element = document.getElementById('documentContent');
 
-            // Timeout per dare tempo alle immagini di caricarsi
+            // Ritardo per dare tempo alle immagini di caricarsi completamente
             setTimeout(() => {
-                html2pdf(element, {
-                    margin: 10,
-                    filename: 'Documento_Polizia_di_Stato.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
+                // Opzioni per html2pdf
+                const pdfOptions = {
+                    margin: 10, // Margini del PDF in mm
+                    filename: 'Documento_Polizia_di_Stato.pdf', // Nome del file PDF
+                    image: { type: 'jpeg', quality: 0.98 }, // Tipo e qualità dell'immagine
                     html2canvas: {
-                        scale: 2,
-                        logging: true,
-                        dpi: 192,
-                        letterRendering: true,
-                        useCORS: true // Tenta di risolvere problemi CORS con le immagini
+                        scale: 2, // Scala per una migliore risoluzione
+                        logging: true, // Abilita il logging per il debug
+                        dpi: 192, // DPI per la conversione
+                        letterRendering: true, // Migliora il rendering del testo
+                        useCORS: true // Tenta di risolvere problemi CORS con le immagini esterne
                     },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                }).then(() => {
-                    // Ripristina il pulsante dopo la generazione
-                    document.querySelector('.export-button').textContent = originalButtonText;
-                    document.querySelector('.export-button').disabled = false;
-                }).catch(error => {
-                    console.error("Errore durante la generazione del PDF:", error);
-                    alert("Si è verificato un errore durante la generazione del PDF. Controlla la console per i dettagli.");
-                    document.querySelector('.export-button').textContent = originalButtonText;
-                    document.querySelector('.export-button').disabled = false;
-                });
-            }, 1000); // Ritardo di 1 secondo
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } // Unità, formato e orientamento del PDF
+                };
+
+                // Avvia la generazione del PDF
+                html2pdf().from(element).set(pdfOptions).save()
+                    .then(() => {
+                        // Ripristina il pulsante dopo la generazione riuscita
+                        exportButton.textContent = originalButtonText;
+                        exportButton.disabled = false;
+                        showMessageBox("PDF Generato", "Il documento PDF è stato generato con successo!");
+                    })
+                    .catch(error => {
+                        // Gestisce gli errori durante la generazione del PDF
+                        console.error("Errore durante la generazione del PDF:", error);
+                        showMessageBox(
+                            "Errore di Generazione PDF",
+                            "Si è verificato un errore durante la generazione del PDF. Controlla la console per i dettagli."
+                        );
+                        // Ripristina il pulsante anche in caso di errore
+                        exportButton.textContent = originalButtonText;
+                        exportButton.disabled = false;
+                    });
+            }, 1000); // Ritardo di 1 secondo per il caricamento delle risorse
         }
     </script>
 </body>
